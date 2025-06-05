@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Image Generator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="navbar.css">
+  <style>
+    .container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <div class="nav-content">
+    <nav class="navbar">
+      <div class="nav-left">
+        <a href="#" class="nav-logo">
+          <i class="fa-solid fa-robot"></i>
+          A-Image
+        </a>
+        <div class="nav-item">
+          <ul class="nav-links">
+            <li><a href="landing.html#home">Home</a></li>
+            <li><a href="landing.html#features">Features</a></li>
+            <li><a href="landing.html#gallery">Gallery</a></li>
+            <li><a href="landing.html#about">About</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="nav-right">
+        <button class="theme-toggle">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+
+
+
+        <div class="user-menu">
+          <button class="user-btn">
+            <i class="fa-solid fa-user"></i>
+          </button>
+          <div class="user-dropdown">
+            <div class="user-info">
+              <p class="user-name">Loading...</p>
+              <p class="user-email">user@example.com</p>
+            </div>
+            <div class="theme-options">
+              <p>Theme:</p>
+              <button class="theme-option" data-theme="light">Light</button>
+              <button class="theme-option" data-theme="dark">Dark</button>
+              <button class="theme-option" data-theme="neon">Neon</button>
+              <button class="theme-option" data-theme="dracula">Dracula</button>
+              <button class="theme-option" data-theme="sunset">Sunset</button>
+              <button class="theme-option" data-theme="forest">Forest</button>
+              <button class="theme-option" data-theme="ocean">Ocean</button>
+            </div>
+            <button class="logout-btn">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              Logout
+            </button>
+          </div>
+        </div>
+
+
+
+        <button class="hamburger">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container">
+    <header class="header">
+      <div class="logo-wrapper">
+        <div class="logo">
+          <i class="fa-solid fa-palette"></i>
+        </div>
+        <h1>AI Image Generator</h1>
+      </div>
+    </header>
+
+    <div class="main-content">
+      <form action="#" class="prompt-form">
+        <div class="prompt-container">
+          <textarea class="prompt-input" placeholder="Express your imagination..." spellcheck="false"
+            autofocus required></textarea>
+          <button type="button" class="prompt-btn" title="Get Random Prompt">
+            <i class="fa-solid fa-dice"></i>
+          </button>
+        </div>
+
+        <div class="prompt-actions">
+          <div class="select-wrapper">
+            <select class="custom-select" id="model-select" required>
+              <option value="" selected disabled>Select Model</option>
+              <option value="black-forest-labs/FLUX.1-dev">FLUX.1-dev</option>
+              <option value="black-forest-labs/FLUX.1-schnell">FLUX.1-schnell</option>
+              <option value="stabilityai/stable-diffusion-xl-base-1.0">Stable Diffusion XL</option>
+              <option value="runwayml/stable-diffusion-v1-5">Stable Diffusion v1.5</option>
+              <option value="stabilityai/stable-diffusion-3-medium-diffusers">Stable Diffusion 3</option>
+            </select>
+          </div>
+          <div class="select-wrapper">
+            <select class="custom-select" id="count-select" required>
+              <option value="" selected disabled>Image Count</option>
+              <option value="1">1 Image</option>
+              <option value="2">2 Images</option>
+              <option value="3">3 Images</option>
+              <option value="4">4 Images</option>
+            </select>
+          </div>
+          <div class="select-wrapper">
+            <select class="custom-select" id="ratio-select" required>
+              <option value="" selected disabled>Aspect Ratio</option>
+              <option value="1/1">Square (1:1)</option>
+              <option value="16/9">Landscape (16:9)</option>
+              <option value="9/16">Portrait (9:16)</option>
+            </select>
+          </div>
+          <button type="submit" class="generate-btn">
+            <i class="fa-solid fa-wand-sparkles"></i>
+            Generate
+          </button>
+        </div>
+      </form>
+
+      <div class="gallery-grid"></div>
+    </div>
+  </div>
+
+
+
+  <script src="script.js"></script>
+  <script src="auth.js"></script>
+  <script src="api.js"></script>
+</body>
+
+</html>
