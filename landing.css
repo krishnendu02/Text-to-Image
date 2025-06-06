@@ -49,16 +49,250 @@
 }
 
 .dracula-theme {
-    --color-primary: #bd93f9;
-    --color-primary-dark: #6272a4;
-    --color-accent: #ff79c6;
-    --color-card: #282a36;
-    --color-input: #343746;
-    --color-text: #f8f8f2;
-    --color-placeholder: #6272a4;
-    --color-border: #44475a;
-    --color-gradient: linear-gradient(135deg, #bd93f9, #ff79c6);
-    --bg-image: linear-gradient(to bottom right, #282a36, #44475a);
+  /* DEMONIC COLOR PALETTE */
+  --color-primary: #ff1a1a;        /* Hellfire red */
+  --color-primary-dark: #600000;   /* Dried sacrificial blood */
+  --color-accent: #ff4d4d;         /* Beating heart glow */
+  --color-card: #0a0505;           /* Abyss black */
+  --color-input: #1a0505;          /* Blood-crusted stone */
+  --color-text: #ffdddd;           /* Ghostly pale */
+  --color-placeholder: #ff6b6b;    /* Flickering bloodlight */
+  --color-border: #500000;         /* Ancient scarred flesh */
+  
+  /* HELLSCAPE GRADIENT */
+  --color-gradient: linear-gradient(
+    145deg, 
+    #ff1a1a 0%, 
+    #8b0000 40%, 
+    #400000 100%
+  );
+  
+  /* MOVING BLOODSTORM BACKGROUND */
+  --bg-image: 
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" opacity="0.04"><path d="M50,50 C100,20 150,80 200,50 S300,20 350,50" stroke="%23ff1a1a" fill="none" stroke-width="2" stroke-dasharray="5,3"/></svg>'),
+    radial-gradient(
+      circle at 30% 10%,
+      rgba(255, 26, 26, 0.2) 0%,
+      transparent 30%
+    ),
+    linear-gradient(
+      15deg,
+      #0a0505 0%,
+      #1a0505 100%
+    );
+  background-size: 300px 300px, cover, cover;
+  background-attachment: fixed;
+  animation: bloodFlow 60s linear infinite;
+}
+
+/* ===== LIVING NIGHTMARE EFFECTS ===== */
+.dracula-theme body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* FLOATING BLOOD CELLS */
+.dracula-theme body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" opacity="0.03"><circle cx="10" cy="10" r="3" fill="%23ff1a1a"/></svg>');
+  pointer-events: none;
+  z-index: -1;
+  animation: floatBlood 30s linear infinite;
+}
+
+/* PULSING DEMON HEART */
+.dracula-theme .theme-toggle {
+  background: #1a0505 !important;
+  border: 1px solid #ff1a1a !important;
+  box-shadow: 0 0 15px #ff1a1a !important;
+}
+
+.dracula-theme .theme-toggle i {
+  color: #ff1a1a !important;
+  animation: demonHeart 1.2s infinite;
+  text-shadow: 0 0 15px #ff1a1a;
+}
+
+
+/* DemonHeart Animation */
+/* @keyframes demonHeart {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  25% { transform: scale(1.2); opacity: 1; }
+  50% { transform: scale(0.9); opacity: 0.7; }
+  75% { transform: scale(1.1); opacity: 1; }
+} */
+
+/* BLOODFALL FROM TOP */
+.dracula-theme .container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 3px;
+  height: 0;
+  background: linear-gradient(to bottom, #ff1a1a, transparent);
+  animation: bloodFall 12s 3s infinite;
+  filter: blur(1px);
+  z-index: 10;
+}
+
+@keyframes bloodFall {
+  0% { height: 0; opacity: 0; }
+  10% { opacity: 1; }
+  90% { height: 100vh; opacity: 0.8; }
+  100% { height: 100vh; opacity: 0; }
+}
+
+/* SCREAMING SKULL LOADER */
+.dracula-theme .img-card.loading .spinner {
+  border: 3px solid #500000;
+  border-top-color: #ff1a1a;
+  position: relative;
+}
+
+.dracula-theme .img-card.loading .spinner::after {
+  content: "☠";
+  position: absolute;
+  font-size: 24px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: skullScream 2s infinite;
+}
+
+@keyframes skullScream {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; text-shadow: 0 0 10px #ff1a1a; }
+}
+
+/* HAUNTED IMAGE CARDS */
+.dracula-theme .img-card {
+  background: #1a0505 !important;
+  border: 1px solid #500000 !important;
+  box-shadow: 0 5px 15px rgba(255, 26, 26, 0.3) !important;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  position: relative;
+  overflow: hidden;
+}
+
+.dracula-theme .img-card::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.05"><path d="M30,30 Q50,10 70,30 T90,30" stroke="%23ff1a1a" fill="none" stroke-width="2"/></svg>');
+  animation: bloodRipple 20s linear infinite;
+}
+
+.dracula-theme .img-card:hover {
+  transform: translateY(-8px) rotate(1deg);
+  box-shadow: 0 15px 40px rgba(255, 26, 26, 0.6) !important;
+  filter: sepia(50%) brightness(0.8) contrast(1.3);
+}
+
+/* DEMONIC GENERATE BUTTON */
+.dracula-theme .hero-cta {
+  background: linear-gradient(145deg, #600000, #8b0000) !important;
+  border: 1px solid #ff1a1a !important;
+  text-shadow: 0 0 5px #ff1a1a;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dracula-theme .hero-cta::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    linear-gradient(
+      to bottom right,
+      rgba(255, 26, 26, 0.1),
+      rgba(255, 26, 26, 0.3)
+    );
+  transform: rotate(45deg);
+  animation: demonFire 4s alternate infinite;
+}
+
+.dracula-theme .hero-cta:hover {
+  box-shadow: 0 0 40px #ff1a1a !important;
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* BLOODCURDLING ANIMATIONS */
+@keyframes bloodFlow {
+  0% { background-position: 0 0, 0 0, 0 0; }
+  100% { background-position: 300px 300px, 0 0, 0 0; }
+}
+
+@keyframes floatBlood {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-100px) translateX(50px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+@keyframes bloodRipple {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
+}
+
+@keyframes demonFire {
+  0% { transform: rotate(45deg) translate(-30%, -30%); }
+  100% { transform: rotate(45deg) translate(30%, 30%); }
+}
+
+/* CURSED SCROLLBAR */
+.dracula-theme ::-webkit-scrollbar {
+  width: 10px;
+  background: #0a0505;
+}
+
+.dracula-theme ::-webkit-scrollbar-thumb {
+  background: #ff1a1a;
+  border-radius: 5px;
+  border: 2px solid #500000;
+}
+
+.dracula-theme ::-webkit-scrollbar-thumb:hover {
+  background: #ff4d4d;
+  box-shadow: 0 0 10px #ff1a1a;
+}
+
+/* HAUNTED TEXT INPUT */
+.dracula-theme .prompt-input {
+  background: #1a0505 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="20" opacity="0.05"><path d="M0,10 Q15,15 30,10 T60,10 T90,10" stroke="%23ff1a1a" fill="none" stroke-width="1"/></svg>') !important;
+  border: 1px solid #500000 !important;
+  text-shadow: 0 0 3px #ff1a1a;
+}
+
+.dracula-theme .prompt-input:focus {
+  box-shadow: 0 0 0 4px rgba(255, 26, 26, 0.4) !important;
+  border-color: #ff1a1a !important;
+  background: #1a0505 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="20" opacity="0.1"><path d="M0,10 Q15,5 30,10 T60,10 T90,10" stroke="%23ff1a1a" fill="none" stroke-width="1"/></svg>') !important;
+  animation: inputPulse 2s infinite;
+}
+
+@keyframes inputPulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(255, 26, 26, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(255, 26, 26, 0.2); }
+}
+
+.dracula-theme .prompt-input:focus {
+  box-shadow: 0 0 0 4px rgba(189, 147, 249, 0.15);
+}
+
+.dracula-theme .theme-toggle:hover {
+  color: var(--color-accent);
 }
 
 .sunset-theme {

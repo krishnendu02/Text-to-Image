@@ -120,7 +120,7 @@ function updateThemeToggleIcon(themeName) {
   switch (themeName) {
     case 'light': icon.classList.add('fa-moon'); break;
     case 'dark': icon.classList.add('fa-lightbulb'); break;
-    case 'neon': icon.classList.add('fa-skull'); break;
+    case 'neon': icon.classList.add('fa-ghost'); break;
     case 'dracula': icon.classList.add('fa-sun-plant-wilt'); break;
     case 'sunset': icon.classList.add('fa-tree'); icon.style.color = '#ff7e5f'; break;
     case 'forest': icon.classList.add('fa-water'); break;

@@ -62,7 +62,7 @@ function setTheme(themeName, withTransition = true) {
 //         case 'light': icon.classList.add('fa-sun'); break;
 //         case 'dark': icon.classList.add('fa-moon'); break;
 //         case 'neon': icon.classList.add('fa-lightbulb'); break;
-//         case 'dracula': icon.classList.add('fa-skull'); break;
+//         case 'dracula': icon.classList.add('fa-ghost'); break;
 //         case 'sunset': icon.classList.add('fa-sun-plant-wilt'); icon.style.color = '#ff7e5f'; break;
 //         case 'forest': icon.classList.add('fa-tree'); break;
 //         case 'ocean': icon.classList.add('fa-water'); break;
@@ -76,7 +76,7 @@ function updateThemeToggleIcon(themeName) {
     switch (themeName) {
         case 'light': icon.classList.add('fa-moon'); break;
         case 'dark': icon.classList.add('fa-lightbulb'); break;
-        case 'neon': icon.classList.add('fa-skull'); break;
+        case 'neon': icon.classList.add('fa-ghost'); break;
         case 'dracula': icon.classList.add('fa-sun-plant-wilt'); break;
         case 'sunset': icon.classList.add('fa-tree'); icon.style.color = '#ff7e5f'; break;
         case 'forest': icon.classList.add('fa-water'); break;
