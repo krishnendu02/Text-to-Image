@@ -1,4 +1,4 @@
-// App State
+// App State 
 const state = {
     currentTheme: localStorage.getItem('theme') || 'light',
     isTransitioning: false
@@ -112,7 +112,7 @@ function setupEventListeners() {
     });
     elements.userBtn.addEventListener('click', () => {
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        window.location.href = currentUser ? 'login.html' : 'index.html';
+        window.location.href = currentUser ? 'login.html' : 'main.html';
     });
 }
 

@@ -20,9 +20,9 @@ const registerForm = document.getElementById('registerForm');
 // Current user session
 let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
 
-// Redirect to index if already logged in
+// Redirect to main if already logged in
 if (currentUser && (window.location.pathname.includes('login.html') || window.location.pathname.includes('register.html'))) {
-  window.location.href = 'index.html';
+  window.location.href = 'main.html';
 }
 
 // Register form submission
@@ -63,7 +63,7 @@ if (registerForm) {
     localStorage.setItem('currentUser', JSON.stringify(currentUser));
     
     // Redirect to main page
-    window.location.href = 'index.html';
+    window.location.href = 'main.html';
   });
 }
 
@@ -87,7 +87,7 @@ if (loginForm) {
     localStorage.setItem('currentUser', JSON.stringify(currentUser));
     
     // Redirect to main page
-    window.location.href = 'index.html';
+    window.location.href = 'main.html';
   });
 }
 
